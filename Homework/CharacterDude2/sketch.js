@@ -19,6 +19,7 @@ function setup() {
 
 function draw() {
   // put drawing code here
+  //i made a change
 background('LemonChiffon');
   pointX = mouseX;
   pointY = mouseY;
