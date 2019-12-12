@@ -7,11 +7,11 @@
 // Image by <a href="https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1297982">OpenClipart-Vectors</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1297982">Pixabay</a>
 
 
-
+var SoundFile;
 
 var scene, ghost, pumpkinGreen, pumpkinRed, pumpkinBlack, pumpkinBackground, bat;
 
-var pButton, gButton, bButton;
+var pButton, gButton, bButton, mButton;
 
 var curImage, currPumpkin;
 
@@ -24,6 +24,7 @@ function preload(){
   pumpkinBlack = loadImage("Images/pumpkinBlack.png");
   bat = loadImage("Images/bat.png");
   pumpkinBackgroud= loadImage("Images/scenepumpkin.jpg");
+  SoundFile = loadSound("Images/song.mp3");
 }
 
 function setup() {
@@ -44,6 +45,9 @@ bButton.position(1050,300);
 bButton.mousePressed(function(){
   curImage = 2;
 })
+mButton = createButton("Click to play music");
+mButton.position(1250,300);
+mButton.mousePressed(togglePlaying);
 
 createCanvas(1700,925);
 }
@@ -75,6 +79,9 @@ else if(curImage == 2){
   batImage();
 }
 
+
+
+
 }
 
 
@@ -87,7 +94,14 @@ function mousePressed(currGhost){
 }
 
 
-
+function togglePlaying(){
+  if (!SoundFile.isPlaying()){
+    SoundFile.play();
+    SoundFile.setVolume(0.3);
+  } else {
+    SoundFile.pause();
+  }
+}
 
 function pumpkinImage(){
   keyPressed();
